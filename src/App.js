@@ -1,9 +1,10 @@
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
-  return (
-    <div>
-      <p>Here will be a main componemt</p>
-    </div>
+  return ( 
+    <>
+      <SignUp />
+    </>
   );
 }
 
