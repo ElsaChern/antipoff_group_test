@@ -63,5 +63,11 @@ const LoginText = styled.p`
     line-height: 23px;
 `;
 
+const InputIcon = styled.span`
+    position: relative;
+    left: 465px;
+    top: -50px;
+`;
 
-export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInput, FormButton, LoginText };
+
+export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInput, FormButton, LoginText, InputIcon };

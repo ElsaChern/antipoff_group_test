@@ -43,6 +43,13 @@ const FormInput = styled.input`
     padding-left: 15px;
 `;
 
+const InputIcon = styled.span`
+    position: relative;
+    left: 465px;
+    top: -50px;
+`;
+
+
 const FormButton = styled.button`
     width: 100%;
     cursor: pointed;
@@ -64,4 +71,4 @@ const LoginText = styled.p`
 `;
 
 
-export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInput, FormButton, LoginText };
+export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInput, InputIcon, FormButton, LoginText };
