@@ -7,6 +7,8 @@ import { useState } from "react";
 
 const SignIn = () => {
     const [passwordShown, setPasswordShown] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const togglePasswordInput = () => {
         setPasswordShown(!passwordShown);
@@ -18,9 +20,19 @@ const SignIn = () => {
                 <FormTitle>Вход</FormTitle>
                 <FormControl>
                     <FormLabel>Электронная почта</FormLabel>
-                    <FormInput></FormInput>
+                    <FormInput
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="example@mail.ru"
+                    />
                     <FormLabel>Пароль</FormLabel>
-                    <FormInput type={passwordShown ? "text" : "password" } />
+                    <FormInput
+                        type={passwordShown ? "text" : "password" }
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="******"
+                    />
                     <InputIcon onClick={togglePasswordInput}>
                         { passwordShown ? <img src={openEye} alt="SVG logo" /> : <img src={closeEye} alt="SVG logo" /> }
                     </InputIcon>
