@@ -1,8 +1,9 @@
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 const Users = () => {
     return (
-        <Navigate to="/signin" />
+        <h1>Welcome!</h1>
+        // <Navigate to="/signin" />
     )
 }
 

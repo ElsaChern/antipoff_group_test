@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, FormButton, FormControl, FormInput, FormLabel, FormTitle, FormWrapper, LoginText } from "./styled";
 import { InputIcon } from "./styled";
 import openEye from "../../icons/open_eye.svg"
 import closeEye from "../../icons/eye-slash.svg"
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import login from '../../api/login';
+import { setUser } from "../../store/slices/userSlice";
 
 const SignIn = () => {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -14,9 +17,20 @@ const SignIn = () => {
         setPasswordShown(!passwordShown);
     }
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        
+        const result = await login(email, password);
+        dispatch(setUser({token: result.token}));
+        navigate("/users");
+    }
+
     return (
         <FormWrapper>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <FormTitle>Вход</FormTitle>
                 <FormControl>
                     <FormLabel>Электронная почта</FormLabel>

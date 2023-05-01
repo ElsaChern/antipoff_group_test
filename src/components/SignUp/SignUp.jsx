@@ -6,20 +6,30 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import register from "../../api/register";
 import { setUser } from "../../store/slices/userSlice";
+import validation from "./validation";
 
 const SignUp = () => {
     const [passwordShown, setPasswordShown] = useState(false);
-    const [passwordVerificationShown, setpasswordVerificationShown] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordVerification, setpasswordVerification] = useState("");
+    const [passwordConfirmationShown, setpasswordConfirmationShown] = useState(false);
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+    })
+    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+        setValues({
+            ...values, [e.target.name]: e.target.value
+        })
+    }
 
     const togglePasswordShown = () => {
         setPasswordShown(!passwordShown);
     }
 
-    const togglePasswordVerificationShown = () => {
-        setpasswordVerificationShown(!passwordVerificationShown);
+    const togglePasswordConfirmationShown = () => {
+        setpasswordConfirmationShown(!passwordConfirmationShown);
     }
 
     const dispatch = useDispatch();
@@ -27,43 +37,58 @@ const SignUp = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const result = await register(email, password);
-        dispatch(setUser({token: result.token}))
-        navigate("/users")
+        setErrors(validation(values));
+        console.log(Object.keys(errors).length);
+        if (Object.keys(errors).length !== 0) {
+            console.log("here we skip");
+            return;
+        }
+        const result = await register(values.email, values.password);
+        dispatch(setUser({token: result.token}));
+        navigate("/users");
     }
 
     return (
         <FormWrapper>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Регистрация</FormTitle>
                 <FormControl>
                     <FormLabel>Электронная почта</FormLabel>
                     <FormInput
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
                         placeholder="example@mail.ru"
+                        style={errors.email && {borderColor: "red"}} 
                     />
+                    {errors.email && <p style={{color: "red" , fontSize: "10px", margin: "0"}}>{errors.email}</p>}
                     <FormLabel>Пароль</FormLabel>
                     <FormInput
                         type={passwordShown ? "text" : "password"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        name="password"
+                        value={values.password}
+                        onChange={handleChange}
                         placeholder="******"
+                        style={errors.password && {borderColor: "red"}} 
                     />
                     <InputIcon onClick={togglePasswordShown}>
                         {passwordShown ? <img src={openEye} alt="SVG logo" /> : <img src={closeEye} alt="SVG logo" />}
                     </InputIcon>
+                    {errors.password && <p style={{color: "red" , fontSize: "10px", margin: "0"}}>{errors.password}</p>}
                     <FormLabel>Подтвердите пароль</FormLabel>
                     <FormInput
-                        type={passwordVerificationShown ? "text" : "password"}
-                        value={passwordVerification}
-                        onChange={(e) => setpasswordVerification(e.target.value)}
-                        placeholder="******"
+                        type={passwordConfirmationShown ? "text" : "password"}
+                        name="passwordConfirmation"
+                        value={values.passwordConfirmation}
+                        onChange={handleChange}
+                        placeholder="******"    
+                        style={errors.passwordConfirmation && {borderColor: "red"}}                    
                     />
-                    <InputIcon onClick={togglePasswordVerificationShown}>
-                        {passwordVerificationShown ? <img src={openEye} alt="SVG logo" /> : <img src={closeEye} alt="SVG logo" />}
+                    <InputIcon onClick={togglePasswordConfirmationShown}>
+                        {passwordConfirmationShown ? <img src={openEye} alt="SVG logo" /> : <img src={closeEye} alt="SVG logo" />}
                     </InputIcon>
+                    {errors.passwordConfirmation && <p style={{color: "red" , fontSize: "10px", margin: "0"}}>{errors.passwordConfirmation}</p>}
                 </FormControl>
                 <FormButton type="submit">Зарегистрироваться</FormButton>
             </Form>
