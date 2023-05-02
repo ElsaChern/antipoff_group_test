@@ -1,9 +1,10 @@
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
 import { DownIcon, Header, HeaderBtn, HeaderText, HeaderTextWrapper, HeaderTitle, InputHeartIcon, ShowMoreBtn, ShowMoreBtnWrapper, UserCard, UserCardPhoto, UserCardText, UserWrapper } from "./styled";
 import { useState } from "react";
+import { useAuth } from '../../hooks/use-auth';
 
 const Users = () => {
     const [heartShown, setHeartShown] = useState(false);
@@ -11,9 +12,11 @@ const Users = () => {
     const toggleHeart =  () => {
         setHeartShown(!heartShown)
     }
-    return (
+
+    const {isAuth} = useAuth()
+
+    return isAuth ? (
         <>
-        {/* // <Navigate to="/signin" /> */}
         <Header>
             <HeaderBtn>Выход</HeaderBtn>
             <HeaderTextWrapper>
@@ -88,7 +91,7 @@ const Users = () => {
             </ShowMoreBtn>
         </ShowMoreBtnWrapper>
         </>
-    )
+    ) : (<Navigate to="/signin" /> )
 }
 
 export default Users;

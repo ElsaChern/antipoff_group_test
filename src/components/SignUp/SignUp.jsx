@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Form, FormButton, FormControl, FormInput, FormLabel, FormTitle, FormWrapper, InputIcon, LoginText } from "./styled";
 import openEye from "../../icons/open_eye.svg"
 import closeEye from "../../icons/eye-slash.svg"
@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import register from "../../api/register";
 import { setUser } from "../../store/slices/userSlice";
 import validation from "./validation";
+import { useAuth } from "../../hooks/use-auth";
 
 const SignUp = () => {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -49,7 +50,11 @@ const SignUp = () => {
         navigate("/users");
     }
 
-    return (
+    const {isAuth} = useAuth()
+
+    return isAuth ? (
+        (<Navigate to="/users" /> )
+    ) : (
         <FormWrapper>
             <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Регистрация</FormTitle>
