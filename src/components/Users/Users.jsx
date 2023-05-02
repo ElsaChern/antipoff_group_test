@@ -1,7 +1,8 @@
 // import { Navigate } from "react-router-dom";
 import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
-import { Header, HeaderBtn, HeaderText, HeaderTextWrapper, HeaderTitle, InputHeartIcon, UserCard, UserCardPhoto, UserCardText, UserWrapper } from "./styled";
+import down from "../../icons/box-arrow-right.svg"
+import { DownIcon, Header, HeaderBtn, HeaderText, HeaderTextWrapper, HeaderTitle, InputHeartIcon, ShowMoreBtn, ShowMoreBtnWrapper, UserCard, UserCardPhoto, UserCardText, UserWrapper } from "./styled";
 import { useState } from "react";
 
 const Users = () => {
@@ -58,7 +59,34 @@ const Users = () => {
                 { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
                 </InputHeartIcon>
             </UserCard>
+            <UserCard>
+                <UserCardPhoto />
+                <UserCardText>Tomas Black</UserCardText>
+                <InputHeartIcon onClick={toggleHeart}>
+                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
+                </InputHeartIcon>
+            </UserCard>
+            <UserCard>
+                <UserCardPhoto />
+                <UserCardText>Tomas Black</UserCardText>
+                <InputHeartIcon onClick={toggleHeart}>
+                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
+                </InputHeartIcon>
+            </UserCard>
+            <UserCard>
+                <UserCardPhoto />
+                <UserCardText>Tomas Black</UserCardText>
+                <InputHeartIcon onClick={toggleHeart}>
+                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
+                </InputHeartIcon>
+            </UserCard>
         </UserWrapper>
+        <ShowMoreBtnWrapper>
+            <ShowMoreBtn>Показать еще 
+                <DownIcon> {<img src={down} alt="SVG logo"/>}
+                </DownIcon>
+            </ShowMoreBtn>
+        </ShowMoreBtnWrapper>
         </>
     )
 }
