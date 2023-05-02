@@ -37,10 +37,11 @@ const SignUp = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        setErrors(validation(values));
-        console.log(Object.keys(errors).length);
-        if (Object.keys(errors).length !== 0) {
-            console.log("here we skip");
+
+        const newErrors = validation(values)
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length !== 0) {
             return;
         }
         const result = await register(values.email, values.password);

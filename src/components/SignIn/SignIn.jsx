@@ -7,11 +7,21 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import login from '../../api/login';
 import { setUser } from "../../store/slices/userSlice";
+import validation from "./validation";
 
 const SignIn = () => {
     const [passwordShown, setPasswordShown] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+    })
+    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+        setValues({
+            ...values, [e.target.name]: e.target.value
+        })
+    }
 
     const togglePasswordInput = () => {
         setPasswordShown(!passwordShown);
@@ -23,30 +33,43 @@ const SignIn = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         
-        const result = await login(email, password);
+        const newErrors = validation(values)
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length !== 0) {
+            return;
+        }
+        
+        const result = await login(values.email, values.password);
         dispatch(setUser({token: result.token}));
         navigate("/users");
     }
 
     return (
         <FormWrapper>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Вход</FormTitle>
                 <FormControl>
                     <FormLabel>Электронная почта</FormLabel>
                     <FormInput
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
                         placeholder="example@mail.ru"
+                        style={errors.email && {borderColor: "red"}}
                     />
+                    {errors.email && <p style={{color: "red" , fontSize: "10px", margin: "0"}}>{errors.email}</p>}
                     <FormLabel>Пароль</FormLabel>
                     <FormInput
                         type={passwordShown ? "text" : "password" }
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        name="password"
+                        value={values.password}
+                        onChange={handleChange}
                         placeholder="******"
+                        style={errors.password && {borderColor: "red"}} 
                     />
+                    {errors.password && <p style={{color: "red" , fontSize: "10px", margin: "0"}}>{errors.password}</p>}
                     <InputIcon onClick={togglePasswordInput}>
                         { passwordShown ? <img src={openEye} alt="SVG logo" /> : <img src={closeEye} alt="SVG logo" /> }
                     </InputIcon>

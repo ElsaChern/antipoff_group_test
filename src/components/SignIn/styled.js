@@ -37,7 +37,7 @@ const FormInput = styled.input`
     width: 95%;
     background-color: rgba(248, 248, 248, 1);
     border: 1px solid rgba(248, 248, 248, 1);
-    margin-bottom: 16px;   
+    margin-bottom: 10px;   
     border-radius: 8px;
     font-size: 16px;
     padding-left: 15px;
