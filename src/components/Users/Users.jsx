@@ -3,7 +3,7 @@ import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
 import { DownIcon, Header, HeaderBtn, HeaderText, HeaderTextWrapper, HeaderTitle, InputHeartIcon, ShowMoreBtn, ShowMoreBtnWrapper, UserCard, UserCardPhoto, UserCardText, UserWrapper } from "./styled";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import fetchUsers from "../../api/fetchUsers";
 // import { useAuth } from '../../hooks/use-auth';
 
@@ -33,10 +33,6 @@ const Users = () => {
 
     const navigate = useNavigate();
 
-    const handleProfile = () => {
-        navigate("/user");
-    }
-
     const signOut = () => {
         navigate("/signIn");
     }
@@ -54,18 +50,18 @@ const Users = () => {
             </Header>
             <UserWrapper>
 
-                {error ? (<div>Ошибка получения данных</div>
+                {error ? (<p>Ошибка получения данных</p>
                 ) : (users.map((user) => {
                     return (
-                        <>
+                        <Fragment key={user.id}>
                             <UserCard>
-                                <UserCardPhoto onClick={handleProfile} key={user.avatar} src={user.avatar} />
+                                <a href={`/users/${user.id}`}><UserCardPhoto src={user.avatar} /></a>
                                 <UserCardText>{user.first_name} {user.last_name}</UserCardText>
                                 <InputHeartIcon onClick={toggleHeart}>
                                     {<img src={heartShown ? heartFill : heart} alt="heart" />}
                                 </InputHeartIcon>
                             </UserCard>
-                        </>
+                        </Fragment>
                     );
                 }))}
 

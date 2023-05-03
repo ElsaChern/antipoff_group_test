@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import img from "../../../icons/cat.jpeg"
 
 const Header = styled.div`
     background-color: rgba(81, 38, 137, 1);
@@ -30,11 +29,10 @@ const UserCarInfo = styled.div`
     margin-left: 200px;
 `;
 
-const UserPhoto = styled.div`
+const UserPhoto = styled.img`
     margin: 39px;
     width: 185px;
     height: 185px;
-    background-image: url('${img}');
     background-size: cover;
     border-radius: 100px;
 `;
@@ -75,7 +73,7 @@ const UserCardText = styled.p`
 `;
 
 const UserCardContactWrapper = styled.div`
-    width: 200px;
+    width: 250px;
     font-size: 16px;
 `;
 
