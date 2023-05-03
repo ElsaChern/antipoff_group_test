@@ -88,6 +88,8 @@ const UserContactIcon = styled.span`
 `;
 
 
-export { Header, HeaderBtnLeft, UserCarInfo, UserPhoto, HeaderTextWrapper,
-     HeaderTitle, HeaderText, HeaderBtnRight, UserCardWrapper, UserCardText,
-      UserCardContactWrapper, UserCardContact,UserContactIcon };
+export {
+    Header, HeaderBtnLeft, UserCarInfo, UserPhoto, HeaderTextWrapper,
+    HeaderTitle, HeaderText, HeaderBtnRight, UserCardWrapper, UserCardText,
+    UserCardContactWrapper, UserCardContact, UserContactIcon
+};

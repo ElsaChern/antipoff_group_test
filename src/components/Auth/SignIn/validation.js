@@ -7,12 +7,12 @@ const validation = (values) => {
         errors.email = errorsText.required
     } else if (!values.email.match(emailRegexp)) {
         errors.email = errorsText.formatData
-    } 
+    }
 
     if (!values.password) {
         errors.password = errorsText.required
-    } 
-    
+    }
+
     return errors;
 }
 
