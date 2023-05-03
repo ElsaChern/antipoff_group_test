@@ -32,15 +32,35 @@ const FormLabel = styled.label`
     line-height: 23px;
 `;
 
+const FormInputWrapper = styled.div`
+    margin-bottom: 16px; 
+`;
+
 const FormInput = styled.input`
     height: 48px;
     width: 95%;
     background-color: rgba(248, 248, 248, 1);
-    border: 1px solid rgba(248, 248, 248, 1);
-    margin-bottom: 16px;   
+    border: 1px solid rgba(248, 248, 248, 1);      
     border-radius: 8px;
     font-size: 16px;
     padding-left: 15px;
+`;
+
+const InputIcon = styled.span`
+    position: relative;
+    left: -35px;
+    top: 20px;
+`;
+
+const Icon = styled.img`
+    position: absolute;
+`;
+
+
+const ErrorField = styled.p`
+    color: red;
+    font-size: 10px;
+    margin: 0;
 `;
 
 const FormButton = styled.button`
@@ -63,11 +83,5 @@ const LoginText = styled.p`
     line-height: 23px;
 `;
 
-const InputIcon = styled.span`
-    position: relative;
-    left: 465px;
-    top: -50px;
-`;
 
-
-export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInput, FormButton, LoginText, InputIcon };
+export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInputWrapper, FormInput, InputIcon, Icon, ErrorField, FormButton, LoginText };
