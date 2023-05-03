@@ -1,10 +1,10 @@
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
 import { DownIcon, Header, HeaderBtn, HeaderText, HeaderTextWrapper, HeaderTitle, InputHeartIcon, ShowMoreBtn, ShowMoreBtnWrapper, UserCard, UserCardPhoto, UserCardText, UserWrapper } from "./styled";
 import { useState } from "react";
-import { useAuth } from '../../hooks/use-auth';
+// import { useAuth } from '../../hooks/use-auth';
 
 const Users = () => {
     const [heartShown, setHeartShown] = useState(false);
@@ -13,12 +13,20 @@ const Users = () => {
         setHeartShown(!heartShown)
     }
 
-    const {isAuth} = useAuth()
+    const navigate = useNavigate();
 
-    return isAuth ? (
+    const handleProfile = () => {
+        navigate("/user");
+    }
+
+    const signOut = () => {
+        navigate("/signIn");
+    }
+
+    return (
         <>
         <Header>
-            <HeaderBtn>Выход</HeaderBtn>
+            <HeaderBtn onClick={signOut}>Выход</HeaderBtn>
             <HeaderTextWrapper>
                 <HeaderTitle>Наша команда</HeaderTitle>
                 <HeaderText>Это опытные специалисты, хорошо разбирающиеся во всех задачах,
@@ -27,57 +35,8 @@ const Users = () => {
             </HeaderTextWrapper>
         </Header>
         <UserWrapper>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
-                <UserCardText>Tomas Black</UserCardText>
-                <InputHeartIcon onClick={toggleHeart}>
-                { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
-                </InputHeartIcon>
-            </UserCard>
-            <UserCard>
-                <UserCardPhoto />
+            <UserCard >
+                <UserCardPhoto onClick={handleProfile}/>
                 <UserCardText>Tomas Black</UserCardText>
                 <InputHeartIcon onClick={toggleHeart}>
                 { heartShown ? <img src={heartFill} alt="SVG logo" /> : <img src={heart} alt="SVG logo" /> }
@@ -91,7 +50,7 @@ const Users = () => {
             </ShowMoreBtn>
         </ShowMoreBtnWrapper>
         </>
-    ) : (<Navigate to="/signin" /> )
+    ) 
 }
 
 export default Users;
