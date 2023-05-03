@@ -84,7 +84,7 @@ const SignUp = () => {
                             style={errors.password && { borderColor: "red" }}
                         />
                         <InputIcon onClick={togglePasswordShown}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="SVG logo" />}
+                            {<Icon src={passwordShown ? openEye : closeEye} alt="logo" />}
                         </InputIcon>
                         <ErrorField>
                             {errors.password && errors.password}
@@ -101,7 +101,7 @@ const SignUp = () => {
                             style={errors.passwordConfirmation && { borderColor: "red" }}
                         />
                         <InputIcon onClick={togglePasswordConfirmationShown}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="SVG logo" />}
+                            {<Icon src={passwordShown ? openEye : closeEye} alt="logo" />}
                         </InputIcon>
                         <ErrorField>
                             {errors.passwordConfirmation && errors.passwordConfirmation}
