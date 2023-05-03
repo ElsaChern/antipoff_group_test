@@ -37,13 +37,13 @@ const User = () => {
                 <UserCardContactWrapper>
                     <UserCardContact>
                         <UserContactIcon>
-                            <img src={phone} alt="SVG logo" />
+                            <img src={phone} alt="phone" />
                         </UserContactIcon>
                         8 (800) 555-35-35
                     </UserCardContact>
                     <UserCardContact>
                         <UserContactIcon>
-                            <img src={email} alt="SVG logo" />
+                            <img src={email} alt="envelope" />
                         </UserContactIcon>
                         example@gmail.com
                     </UserCardContact>

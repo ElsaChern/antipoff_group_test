@@ -69,9 +69,7 @@ const SignUp = () => {
                             placeholder="example@mail.ru"
                             style={errors.email && { borderColor: "red" }}
                         />
-                        <ErrorField>
-                            {errors.email && errors.email}
-                        </ErrorField>
+                        <ErrorField>{errors.email}</ErrorField>
                     </FormInputWrapper>
                     <FormLabel>Пароль</FormLabel>
                     <FormInputWrapper>
@@ -84,11 +82,9 @@ const SignUp = () => {
                             style={errors.password && { borderColor: "red" }}
                         />
                         <InputIcon onClick={togglePasswordShown}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="logo" />}
+                            {<Icon src={passwordShown ? openEye : closeEye} alt="eye" />}
                         </InputIcon>
-                        <ErrorField>
-                            {errors.password && errors.password}
-                        </ErrorField>
+                        <ErrorField>{errors.password}</ErrorField>
                     </FormInputWrapper>
                     <FormLabel>Подтвердите пароль</FormLabel>
                     <FormInputWrapper>
@@ -101,11 +97,9 @@ const SignUp = () => {
                             style={errors.passwordConfirmation && { borderColor: "red" }}
                         />
                         <InputIcon onClick={togglePasswordConfirmationShown}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="logo" />}
+                            {<Icon src={passwordShown ? openEye : closeEye} alt="eye" />}
                         </InputIcon>
-                        <ErrorField>
-                            {errors.passwordConfirmation && errors.passwordConfirmation}
-                        </ErrorField>
+                        <ErrorField>{errors.passwordConfirmation}</ErrorField>
                     </FormInputWrapper>
                 </FormControl>
                 <FormButton type="submit">Зарегистрироваться</FormButton>

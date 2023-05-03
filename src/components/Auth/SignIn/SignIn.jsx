@@ -33,23 +33,23 @@ const SignIn = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        
+
         const newErrors = validation(values)
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length) {
             return;
         }
-        
+
         const result = await login(values.email, values.password);
-        dispatch(setUser({token: result.token}));
+        dispatch(setUser({ token: result.token }));
         navigate("/users");
     }
 
-    const {isAuth} = useAuth()
+    const { isAuth } = useAuth()
 
     return isAuth ? (
-        (<Navigate to="/users" /> )
+        (<Navigate to="/users" />)
     ) : (
         <FormWrapper>
             <Form onSubmit={handleSubmit} noValidate>
@@ -65,26 +65,22 @@ const SignIn = () => {
                             placeholder="example@mail.ru"
                             style={errors.email && { borderColor: "red" }}
                         />
-                        <ErrorField>
-                            {errors.email && errors.email}
-                        </ErrorField>
+                        <ErrorField>{errors.email}</ErrorField>
                     </FormInputWrapper>
                     <FormLabel>Пароль</FormLabel>
                     <FormInputWrapper>
-                    <FormInput
-                        type={passwordShown ? "text" : "password" }
-                        name="password"
-                        value={values.password}
-                        onChange={handleChange}
-                        placeholder="******"
-                        style={errors.password && {borderColor: "red"}} 
-                    />
-                    <InputIcon onClick={togglePasswordInput}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="logo" />}
+                        <FormInput
+                            type={passwordShown ? "text" : "password"}
+                            name="password"
+                            value={values.password}
+                            onChange={handleChange}
+                            placeholder="******"
+                            style={errors.password && { borderColor: "red" }}
+                        />
+                        <InputIcon onClick={togglePasswordInput}>
+                            {<Icon src={passwordShown ? openEye : closeEye} alt="eye" />}
                         </InputIcon>
-                        <ErrorField>
-                            {errors.password && errors.password}
-                        </ErrorField>
+                        <ErrorField>{errors.password}</ErrorField>
                     </FormInputWrapper>
                 </FormControl>
                 <FormButton>Войти</FormButton>

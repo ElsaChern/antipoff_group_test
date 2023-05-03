@@ -1,23 +1,25 @@
+import { errorsText, emailRegexp } from "../validationsConcern";
+
 const validation = (values) => {
     let errors = {};
 
     if (!values.email) {
-        errors.email = "Поле не может быть пустым"
-    } else if (!values.email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i)) {
-        errors.email = "Неверный формат"
+        errors.email = errorsText.required
+    } else if (!values.email.match(emailRegexp)) {
+        errors.email = errorsText.formatData
     } 
 
     if (!values.password) {
-        errors.password = "Поле не может быть пустым"
+        errors.password = errorsText.required
     } 
 
     if (!values.passwordConfirmation) {
-        errors.passwordConfirmation = "Поле не может быть пустым"
+        errors.passwordConfirmation = errorsText.required
     } 
 
     if (values.password && values.passwordConfirmation) {
         if (values.password !== values.passwordConfirmation) {
-            errors.passwordConfirmation = "Пароли не совпадают"
+            errors.passwordConfirmation = errorsText.passwordConfirmation
         }
     }
     return errors;
