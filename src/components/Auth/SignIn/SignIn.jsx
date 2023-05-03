@@ -80,7 +80,7 @@ const SignIn = () => {
                         style={errors.password && {borderColor: "red"}} 
                     />
                     <InputIcon onClick={togglePasswordInput}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="SVG logo" />}
+                            {<Icon src={passwordShown ? openEye : closeEye} alt="logo" />}
                         </InputIcon>
                         <ErrorField>
                             {errors.password && errors.password}

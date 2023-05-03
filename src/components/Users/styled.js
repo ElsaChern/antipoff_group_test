@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import img from "../../icons/cat.jpeg"
 
 const Header = styled.div`
     background-color: rgba(81, 38, 137, 1);
@@ -53,10 +52,9 @@ const UserCard = styled.div`
     border-radius: 10px;
 `;
 
-const UserCardPhoto = styled.div`
+const UserCardPhoto = styled.img`
     width: 124px;
     height: 124px;
-    background-image: url('${img}');
     background-size: cover;
     border-radius: 100px;
     margin: 36px 90px 16px;
