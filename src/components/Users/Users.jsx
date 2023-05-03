@@ -62,7 +62,7 @@ const Users = () => {
                                 <UserCardPhoto onClick={handleProfile} key={user.avatar} src={user.avatar} />
                                 <UserCardText>{user.first_name} {user.last_name}</UserCardText>
                                 <InputHeartIcon onClick={toggleHeart}>
-                                    {<img src={heartShown ? heartFill : heart} alt="logo"/>}
+                                    {<img src={heartShown ? heartFill : heart} alt="heart" />}
                                 </InputHeartIcon>
                             </UserCard>
                         </>
@@ -72,7 +72,7 @@ const Users = () => {
             </UserWrapper>
             <ShowMoreBtnWrapper>
                 <ShowMoreBtn>Показать еще
-                    <DownIcon> {<img src={down} alt="logo" />}
+                    <DownIcon> {<img src={down} alt="arrow" />}
                     </DownIcon>
                 </ShowMoreBtn>
             </ShowMoreBtnWrapper>

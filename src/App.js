@@ -5,14 +5,14 @@ import Users from "./components/Users/Users";
 import User from "./components/Users/User/User";
 
 function App() {
-  return ( 
+  return (
     <>
       <Routes>
-        <Route exact path="*" element={ <SignUp/> }/>
-        <Route exact path="/signup" element={ <SignUp/> }/>
-        <Route exact path="/signin" element={ <SignIn/> }/>
-        <Route exact path="/users" element={ <Users /> }/>
-        <Route exact path="/user" element={ <User /> }/>
+        <Route exact path="*" element={<SignUp />} />
+        <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/signin" element={<SignIn />} />
+        <Route exact path="/users" element={<Users />} />
+        <Route exact path="/user" element={<User />} />
       </Routes>
     </>
   );

@@ -8,7 +8,7 @@ const register = async (email, password) => {
         password,
     }
 
-    const response = await apiInstance.post(registerUrl, params );
+    const response = await apiInstance.post(registerUrl, params);
 
     return response.data;
 }

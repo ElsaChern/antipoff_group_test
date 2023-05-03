@@ -8,7 +8,7 @@ const login = async (email, password) => {
         password,
     }
 
-    const response = await apiInstance.post(loginUrl, params );
+    const response = await apiInstance.post(loginUrl, params);
 
     return response.data;
 }
