@@ -1,27 +1,40 @@
 import phone from "../../../icons/telephone.svg"
 import email from "../../../icons/envelope.svg"
 import { Header, HeaderBtnLeft, HeaderBtnRight, HeaderText, HeaderTextWrapper, HeaderTitle, UserCarInfo, UserCardContact, UserCardContactWrapper, UserCardText, UserCardWrapper, UserContactIcon, UserPhoto } from "./styled";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import fetchSingleUser from "../../../api/fetchSingleUser";
+import { useEffect, useState } from "react";
 
 const User = () => {
-
+    const { id } = useParams();
     const navigate = useNavigate();
 
-    const handleUsers = () => {
-        navigate("/users");
-    }
     const signOut = () => {
         navigate("/signIn");
     }
 
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const userResult = await fetchSingleUser(id);
+                setUser(userResult)
+            } catch {
+                setUser({});
+            }
+        }
+        getUser({});
+    }, [id]);
+
     return (
         <>
             <Header>
-                <HeaderBtnLeft onClick={handleUsers}>Назад</HeaderBtnLeft>
+                <HeaderBtnLeft onClick={() => navigate(-1)}>Назад</HeaderBtnLeft>
                 <UserCarInfo>
-                    <UserPhoto></UserPhoto>
+                    <UserPhoto src={user.avatar} />
                     <HeaderTextWrapper>
-                        <HeaderTitle>Tomas Black</HeaderTitle>
+                        <HeaderTitle>{user.first_name} {user.last_name}</HeaderTitle>
                         <HeaderText>Партнер</HeaderText>
                     </HeaderTextWrapper>
                 </UserCarInfo>
@@ -45,14 +58,13 @@ const User = () => {
                         <UserContactIcon>
                             <img src={email} alt="envelope" />
                         </UserContactIcon>
-                        example@gmail.com
+                        {user.email}
                     </UserCardContact>
                 </UserCardContactWrapper>
             </UserCardWrapper>
         </>
     )
 }
-
 
 
 export default User;
