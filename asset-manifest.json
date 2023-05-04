@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/antipoff_group_test/static/css/main.e6c13ad2.css",
-    "main.js": "/antipoff_group_test/static/js/main.f7c6abc0.js",
+    "main.js": "/antipoff_group_test/static/js/main.403d9198.js",
     "static/js/787.0426fdd0.chunk.js": "/antipoff_group_test/static/js/787.0426fdd0.chunk.js",
     "static/media/telephone.svg": "/antipoff_group_test/static/media/telephone.76704b543a8ad076ca2106161b5c977f.svg",
     "static/media/eye-slash.svg": "/antipoff_group_test/static/media/eye-slash.3b1d24d45f36c63a871c70f8b74dbf62.svg",
@@ -14,11 +14,11 @@
     "static/media/arrow-left.svg": "/antipoff_group_test/static/media/arrow-left.ad02d556a6905bae2ba392430a729156.svg",
     "static/media/heart-fill.svg": "/antipoff_group_test/static/media/heart-fill.e3f0a020915a51214848cb362b7e6a7a.svg",
     "main.e6c13ad2.css.map": "/antipoff_group_test/static/css/main.e6c13ad2.css.map",
-    "main.f7c6abc0.js.map": "/antipoff_group_test/static/js/main.f7c6abc0.js.map",
+    "main.403d9198.js.map": "/antipoff_group_test/static/js/main.403d9198.js.map",
     "787.0426fdd0.chunk.js.map": "/antipoff_group_test/static/js/787.0426fdd0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.f7c6abc0.js"
+    "static/js/main.403d9198.js"
   ]
 }
