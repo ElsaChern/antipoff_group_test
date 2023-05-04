@@ -3,6 +3,9 @@ import email from "../../../icons/envelope.svg"
 import { useNavigate, useParams } from "react-router-dom";
 import fetchSingleUser from "../../../api/fetchSingleUser";
 import { useEffect, useState } from "react";
+import { removeUser } from "../../../store/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "../../../hooks/use-auth";
 import {
     Header,
     HeaderBtnBack,
@@ -20,20 +23,20 @@ import {
     UserContactIcon,
     UserPhoto
 } from "./styled";
-import { removeUser } from "../../../store/slices/userSlice";
-import { useDispatch } from "react-redux";
 
 const User = () => {
-    const { id } = useParams();
+    const { isAuth } = useAuth()
     const navigate = useNavigate();
+
+    if (!isAuth) { navigate("/login") }
+
+    const [user, setUser] = useState({});
+    const { id } = useParams();
     const dispatch = useDispatch();
 
     const signOut = () => {
         dispatch(removeUser());
-        navigate("/signin");
     }
-
-    const [user, setUser] = useState({});
 
     useEffect(() => {
         const getUser = async () => {
