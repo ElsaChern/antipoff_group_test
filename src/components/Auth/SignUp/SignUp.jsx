@@ -1,5 +1,4 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { ErrorField, Form, FormButton, FormControl, FormInput, FormInputWrapper, FormLabel, FormTitle, FormWrapper, Icon, InputIcon, LoginText } from "../styled";
 import openEye from "../../../icons/open_eye.svg"
 import closeEye from "../../../icons/eye-slash.svg"
 import { useState } from "react";
@@ -8,6 +7,20 @@ import register from "../../../api/register";
 import { setUser } from "../../../store/slices/userSlice";
 import validation from "./validation";
 import { useAuth } from "../../../hooks/use-auth";
+import {
+    ErrorField,
+    Form,
+    FormButton,
+    FormControl,
+    FormInput,
+    FormInputWrapper,
+    FormLabel,
+    FormTitle,
+    FormWrapper,
+    Icon,
+    InputIcon,
+    LoginText
+} from "../styled";
 
 const SignUp = () => {
     const [passwordShown, setPasswordShown] = useState(false);

@@ -12,6 +12,10 @@ Website that displays a list of user cards on the main page and clicks on each c
 
 ## How to start the App:
 
+add https://reqres.in/api/ into .env.local 
+
+To sign in or sign up use default Users emails from https://reqres.in/
+
 `npm install`;
 
 `npm start` to run the server
