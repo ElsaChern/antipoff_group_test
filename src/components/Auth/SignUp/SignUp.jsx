@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorField, Form, FormButton, FormControl, FormInput, FormInputWrapper, FormLabel, FormTitle, FormWrapper, Icon, InputIcon, LoginText } from "../styled";
 import openEye from "../../../icons/open_eye.svg"
 import closeEye from "../../../icons/eye-slash.svg"
@@ -10,14 +10,21 @@ import validation from "./validation";
 import { useAuth } from "../../../hooks/use-auth";
 
 const SignUp = () => {
+    const { isAuth } = useAuth()
+    const navigate = useNavigate();
+
+    if (isAuth) { navigate("/users") }
+
     const [passwordShown, setPasswordShown] = useState(false);
     const [passwordConfirmationShown, setpasswordConfirmationShown] = useState(false);
+    const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         email: "",
         password: "",
         passwordConfirmation: "",
     })
-    const [errors, setErrors] = useState({});
+
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setValues({
@@ -33,9 +40,6 @@ const SignUp = () => {
         setpasswordConfirmationShown(!passwordConfirmationShown);
     }
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -50,11 +54,7 @@ const SignUp = () => {
         navigate("/users");
     }
 
-    const { isAuth } = useAuth()
-
-    return isAuth ? (
-        (<Navigate to="/users" />)
-    ) : (
+    return (
         <FormWrapper>
             <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Регистрация</FormTitle>

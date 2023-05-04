@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorField, Form, FormButton, FormControl, FormInput, FormInputWrapper, FormLabel, FormTitle, FormWrapper, Icon, LoginText } from "../styled";
 import { InputIcon } from "../styled";
 import openEye from "../../../icons/open_eye.svg"
@@ -11,12 +11,19 @@ import validation from "./validation";
 import { useAuth } from "../../../hooks/use-auth";
 
 const SignIn = () => {
+    const { isAuth } = useAuth()
+    const navigate = useNavigate();
+
+    if (isAuth) { navigate("/users") }
+
     const [passwordShown, setPasswordShown] = useState(false);
+    const [errors, setErrors] = useState({});
     const [values, setValues] = useState({
         email: "",
         password: "",
     })
-    const [errors, setErrors] = useState({});
+    
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setValues({
@@ -27,9 +34,6 @@ const SignIn = () => {
     const togglePasswordInput = () => {
         setPasswordShown(!passwordShown);
     }
-
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -46,11 +50,7 @@ const SignIn = () => {
         navigate("/users");
     }
 
-    const { isAuth } = useAuth()
-
-    return isAuth ? (
-        (<Navigate to="/users" />)
-    ) : (
+    return (
         <FormWrapper>
             <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Вход</FormTitle>
