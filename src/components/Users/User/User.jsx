@@ -20,17 +20,13 @@ import {
     UserContactIcon,
     UserPhoto
 } from "./styled";
-import { removeUser } from "../../../store/slices/userSlice";
-import { useDispatch } from "react-redux";
 
 const User = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const signOut = () => {
-        dispatch(removeUser());
-        navigate("/signin");
+        navigate("/signIn");
     }
 
     const [user, setUser] = useState({});

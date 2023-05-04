@@ -47,7 +47,7 @@ const SignIn = () => {
     }
 
     const { isAuth } = useAuth()
-    console.log(isAuth)
+
     return isAuth ? (
         (<Navigate to="/users" />)
     ) : (
