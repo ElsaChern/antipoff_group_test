@@ -1,9 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
 import { Fragment, useEffect, useState } from "react";
+import { removeUser } from "../../store/slices/userSlice";
 import fetchUsers from "../../api/fetchUsers";
+import { useAuth } from "../../hooks/use-auth";
+import { useDispatch } from "react-redux";
 import {
     DownIcon,
     Header,
@@ -22,6 +25,7 @@ import {
 } from "./styled";
 
 const Users = () => {
+
     const [heartShown, setHeartShown] = useState(false);
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(false);
@@ -37,7 +41,7 @@ const Users = () => {
     }
 
     useEffect(() => {
-        getUsers({});
+        getUsers();
     }, []);
 
 
@@ -45,13 +49,15 @@ const Users = () => {
         setHeartShown(!heartShown)
     }
 
-    const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const signOut = () => {
-        navigate("/signIn");
+        dispatch(removeUser());
     }
 
-    return (
+    const { isAuth } = useAuth()
+    return !isAuth ? (
+        (<Navigate to="/login" />)
+    ) :(
         <>
             <Header>
                 <HeaderBtn onClick={signOut}>Выход</HeaderBtn>
