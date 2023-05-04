@@ -1,5 +1,4 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { ErrorField, Form, FormButton, FormControl, FormInput, FormInputWrapper, FormLabel, FormTitle, FormWrapper, Icon, LoginText } from "../styled";
 import { InputIcon } from "../styled";
 import openEye from "../../../icons/open_eye.svg"
 import closeEye from "../../../icons/eye-slash.svg"
@@ -9,6 +8,19 @@ import login from '../../../api/login';
 import { setUser } from "../../../store/slices/userSlice";
 import validation from "./validation";
 import { useAuth } from "../../../hooks/use-auth";
+import {
+    ErrorField,
+    Form,
+    FormButton,
+    FormControl,
+    FormInput,
+    FormInputWrapper,
+    FormLabel,
+    FormTitle,
+    FormWrapper,
+    Icon,
+    LoginText
+} from "../styled";
 
 const SignIn = () => {
     const [passwordShown, setPasswordShown] = useState(false);

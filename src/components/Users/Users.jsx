@@ -4,6 +4,8 @@ import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
 import { Fragment, useEffect, useState } from "react";
 import fetchUsers from "../../api/fetchUsers";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../../store/slices/userSlice";
 import {
     DownIcon,
     Header,
@@ -46,9 +48,11 @@ const Users = () => {
     }
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const signOut = () => {
-        navigate("/signIn");
+        dispatch(removeUser());
+        navigate("/signin");
     }
 
     return (

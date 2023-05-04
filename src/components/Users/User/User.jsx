@@ -3,6 +3,8 @@ import email from "../../../icons/envelope.svg"
 import { useNavigate, useParams } from "react-router-dom";
 import fetchSingleUser from "../../../api/fetchSingleUser";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../../../store/slices/userSlice";
 import {
     Header,
     HeaderBtnBack,
@@ -24,9 +26,11 @@ import {
 const User = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const signOut = () => {
-        navigate("/signIn");
+        dispatch(removeUser());
+        navigate("/signin");
     }
 
     const [user, setUser] = useState({});
