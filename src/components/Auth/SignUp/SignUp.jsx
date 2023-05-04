@@ -97,7 +97,7 @@ const SignUp = () => {
                             style={errors.passwordConfirmation && { borderColor: "red" }}
                         />
                         <InputIcon onClick={togglePasswordConfirmationShown}>
-                            {<Icon src={passwordShown ? openEye : closeEye} alt="eye" />}
+                            {<Icon src={passwordConfirmationShown ? openEye : closeEye} alt="eye" />}
                         </InputIcon>
                         <ErrorField>{errors.passwordConfirmation}</ErrorField>
                     </FormInputWrapper>
