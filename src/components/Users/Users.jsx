@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
@@ -25,15 +25,10 @@ import {
 } from "./styled";
 
 const Users = () => {
-    const { isAuth } = useAuth()
-    const navigate = useNavigate();
-
-    if (!isAuth) { navigate("/login") }
 
     const [heartShown, setHeartShown] = useState(false);
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(false);
-    const dispatch = useDispatch();
 
     const getUsers = async () => {
         try {
@@ -45,19 +40,24 @@ const Users = () => {
         }
     }
 
-    const toggleHeart = () => {
-        setHeartShown(!heartShown)
-    }
-    
-    const signOut = () => {
-        dispatch(removeUser());
-    }
-    
     useEffect(() => {
         getUsers();
     }, []);
 
-    return (
+
+    const toggleHeart = () => {
+        setHeartShown(!heartShown)
+    }
+
+    const dispatch = useDispatch();
+    const signOut = () => {
+        dispatch(removeUser());
+    }
+
+    const { isAuth } = useAuth()
+    return !isAuth ? (
+        (<Navigate to="/login" />)
+    ) :(
         <>
             <Header>
                 <HeaderBtn onClick={signOut}>Выход</HeaderBtn>
