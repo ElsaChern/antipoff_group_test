@@ -1,9 +1,25 @@
 import phone from "../../../icons/telephone.svg"
 import email from "../../../icons/envelope.svg"
-import { Header, HeaderBtnLeft, HeaderBtnRight, HeaderText, HeaderTextWrapper, HeaderTitle, UserCarInfo, UserCardContact, UserCardContactWrapper, UserCardText, UserCardWrapper, UserContactIcon, UserPhoto } from "./styled";
 import { useNavigate, useParams } from "react-router-dom";
 import fetchSingleUser from "../../../api/fetchSingleUser";
 import { useEffect, useState } from "react";
+import {
+    Header,
+    HeaderBtnBack,
+    HeaderBtnOut,
+    HeaderIconBack,
+    HeaderIconOut,
+    HeaderText,
+    HeaderTextWrapper,
+    HeaderTitle,
+    UserCarInfo,
+    UserCardContact,
+    UserCardContactWrapper,
+    UserCardText,
+    UserCardWrapper,
+    UserContactIcon,
+    UserPhoto
+} from "./styled";
 
 const User = () => {
     const { id } = useParams();
@@ -30,23 +46,19 @@ const User = () => {
     return (
         <>
             <Header>
-                <HeaderBtnLeft onClick={() => navigate(-1)}>Назад</HeaderBtnLeft>
+                <HeaderBtnBack onClick={() => navigate(-1)}>Назад</HeaderBtnBack>
+                <HeaderIconBack onClick={() => navigate(-1)}></HeaderIconBack>
                 <UserCarInfo>
-                    <UserPhoto src={user.avatar} />
                     <HeaderTextWrapper>
                         <HeaderTitle>{user.first_name} {user.last_name}</HeaderTitle>
                         <HeaderText>Партнер</HeaderText>
                     </HeaderTextWrapper>
+                    <UserPhoto src={user.avatar} />
                 </UserCarInfo>
-                <HeaderBtnRight onClick={signOut}>Выход</HeaderBtnRight>
+                <HeaderBtnOut onClick={signOut}>Выход</HeaderBtnOut>
+                <HeaderIconOut onClick={signOut}></HeaderIconOut>
             </Header>
             <UserCardWrapper>
-                <UserCardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </UserCardText>
                 <UserCardContactWrapper>
                     <UserCardContact>
                         <UserContactIcon>
@@ -61,6 +73,13 @@ const User = () => {
                         {user.email}
                     </UserCardContact>
                 </UserCardContactWrapper>
+                <UserCardText>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute iruredolor in. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </UserCardText>
             </UserCardWrapper>
         </>
     )
