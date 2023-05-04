@@ -2,10 +2,24 @@ import { useNavigate } from "react-router-dom";
 import heart from "../../icons/heart.svg"
 import heartFill from "../../icons/heart-fill.svg"
 import down from "../../icons/box-arrow-right.svg"
-import { DownIcon, Header, HeaderBtn, HeaderText, HeaderTextWrapper, HeaderTitle, InputHeartIcon, ShowMoreBtn, ShowMoreBtnWrapper, UserCard, UserCardPhoto, UserCardText, UserWrapper } from "./styled";
 import { Fragment, useEffect, useState } from "react";
 import fetchUsers from "../../api/fetchUsers";
-// import { useAuth } from '../../hooks/use-auth';
+import {
+    DownIcon,
+    Header,
+    HeaderBtn,
+    HeaderIcon,
+    HeaderText,
+    HeaderTextWrapper,
+    HeaderTitle,
+    InputHeartIcon,
+    ShowMoreBtn,
+    ShowMoreBtnWrapper,
+    UserCard,
+    UserCardPhoto,
+    UserCardText,
+    UserWrapper
+} from "./styled";
 
 const Users = () => {
     const [heartShown, setHeartShown] = useState(false);
@@ -41,6 +55,7 @@ const Users = () => {
         <>
             <Header>
                 <HeaderBtn onClick={signOut}>Выход</HeaderBtn>
+                <HeaderIcon onClick={signOut}></HeaderIcon>
                 <HeaderTextWrapper>
                     <HeaderTitle>Наша команда</HeaderTitle>
                     <HeaderText>Это опытные специалисты, хорошо разбирающиеся во всех задачах,

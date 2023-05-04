@@ -14,6 +14,11 @@ const Form = styled.form`
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
     border-radius: 16px;
     padding: 16px;
+
+
+    @media only screen and (max-width: 550px) {
+        min-width: 300px;
+    }
 `;
 
 const FormTitle = styled.span`
@@ -50,6 +55,11 @@ const InputIcon = styled.span`
     position: relative;
     left: -35px;
     top: 20px;
+
+    @media only screen and (max-width: 550px) {
+        left: 270px;
+        top: -35px;
+    }
 `;
 
 const Icon = styled.img`
@@ -84,4 +94,17 @@ const LoginText = styled.p`
 `;
 
 
-export { FormWrapper, Form, FormTitle, FormControl, FormLabel, FormInputWrapper, FormInput, InputIcon, Icon, ErrorField, FormButton, LoginText };
+export {
+    FormWrapper,
+    Form,
+    FormTitle,
+    FormControl,
+    FormLabel,
+    FormInputWrapper,
+    FormInput,
+    InputIcon,
+    Icon,
+    ErrorField,
+    FormButton,
+    LoginText
+};

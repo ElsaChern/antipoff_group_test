@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import logOut from "../../icons/log-out.svg"
 
 const Header = styled.div`
     background-color: rgba(81, 38, 137, 1);
@@ -8,18 +9,49 @@ const Header = styled.div`
 const HeaderTextWrapper = styled.div`
     padding: 5px 295px;
     text-align: center;
+
+    @media only screen and (max-width: 1135px) {
+        padding: 5px 200px;
+    }
+
+    @media only screen and (max-width: 820px) {
+        padding: 5px 130px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        padding: 5px 50px;
+    }
 `;
 
 const HeaderTitle = styled.p`
     margin-bottom: 16px;
     font-size: 64px;
     line-height: 75px;
+
+    @media only screen and (max-width: 960px) {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    @media only screen and (max-width: 820px) {
+        font-size: 36px;
+        line-height: 36px;
+    }
 `;
 
 const HeaderText = styled.p`
     font-size: 20px;
     line-height: 23px;
     margin-bottom: 64px;
+
+    @media only screen and (max-width: 960px) {
+        font-size: 18px;
+    }
+
+    @media only screen and (max-width: 820px) {
+        font-size: 16px;
+        line-height: 18px;
+    }
 `;
 
 const HeaderBtn = styled.button`
@@ -31,7 +63,35 @@ const HeaderBtn = styled.button`
     border: 1px solid #F8F8F8;
     padding: 8px 16px;
     border-radius: 8px;
-    font-size: 16px;    
+    font-size: 16px;   
+    
+    @media only screen and (max-width: 1000px) {
+        right: 50px;
+    }
+
+    @media only screen and (max-width: 750px) {
+        display: none;
+    }
+`;
+
+const HeaderIcon = styled.button`
+    display: none;    
+
+    @media only screen and (max-width: 750px) {
+        display: block;
+        background-image: url('${logOut}');
+        position: absolute;
+        top: 25px;
+        right: 50px;
+        padding: 15px;
+        background-color: rgba(81, 38, 137, 1);        
+        border: none;
+    }
+
+    @media only screen and (max-width: 500px) {
+        top: 15px;
+        right: 20px;
+    }
 `;
 
 const UserWrapper = styled.div`
@@ -39,16 +99,19 @@ const UserWrapper = styled.div`
     display: flex;   
     flex-wrap: wrap;  
     justify-content: center;
+
+    @media only screen and (max-width: 820px) {
+        padding: 48px 55px;
+    }
 `;
 
-const UserCard = styled.div`
-    
+const UserCard = styled.div`    
     width: 305px;
     height: 265px;    
     margin-right: 20px;
     margin-bottom: 20px; 
     align-items: center;
-    box-shadow: 0px 0.996045px 3.98418px rgba(51, 51, 51, 0.15);
+    box-shadow: 0px 1px 4px rgba(51, 51, 51, 0.15);
     border-radius: 10px;
 `;
 
@@ -97,4 +160,19 @@ const DownIcon = styled.span`
     margin: 6px;
 `;
 
-export { Header, HeaderTextWrapper, HeaderTitle, HeaderText, HeaderBtn, UserWrapper, UserCard, UserCardPhoto, UserCardText, InputHeartIcon, ShowMoreBtn, ShowMoreBtnWrapper, DownIcon };
+export {
+    Header,
+    HeaderTextWrapper,
+    HeaderTitle,
+    HeaderText,
+    HeaderBtn,
+    HeaderIcon,
+    UserWrapper,
+    UserCard,
+    UserCardPhoto,
+    UserCardText,
+    InputHeartIcon,
+    ShowMoreBtn,
+    ShowMoreBtnWrapper,
+    DownIcon
+};
