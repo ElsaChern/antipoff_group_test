@@ -25,4 +25,4 @@ You can stop the server by simply closing the terminal in which you started it.
 
 ## Screenshorts
 
-"You can see how the app works here (link)"
+"You can see how the app works here - [link](https://github.com/ElsaChern/antipoff_group_test/pull/18)
