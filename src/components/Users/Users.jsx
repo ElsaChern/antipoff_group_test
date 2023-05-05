@@ -31,12 +31,12 @@ const Users = () => {
     const getUsers = async () => {
         try {
             const usersResult = await fetchUsers();
-            setUsers(usersResult)
+            setUsers(usersResult);
         } catch (err) {
             setError(true);
             setUsers([]);
         }
-    }
+    };
 
     useEffect(() => {
         getUsers({});
@@ -44,8 +44,8 @@ const Users = () => {
 
 
     const toggleHeart = () => {
-        setHeartShown(!heartShown)
-    }
+        setHeartShown(!heartShown);
+    };
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Users = () => {
     const signOut = () => {
         dispatch(removeUser());
         navigate("/signin");
-    }
+    };
 
     return (
         <>
@@ -93,6 +93,6 @@ const Users = () => {
             </ShowMoreBtnWrapper>
         </>
     )
-}
+};
 
 export default Users;

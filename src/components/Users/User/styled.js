@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import logOut from "../../../icons/log-out.svg"
-import back from "../../../icons/arrow-left.svg"
+import logOut from "../../../icons/log-out.svg";
+import back from "../../../icons/arrow-left.svg";
 
 
 const Header = styled.div`

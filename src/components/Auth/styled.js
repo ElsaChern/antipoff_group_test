@@ -73,6 +73,11 @@ const ErrorField = styled.p`
     margin: 0;
 `;
 
+const RequestErrorField = styled.p`
+    color: red;
+    font-size: 16px;
+`;
+
 const FormButton = styled.button`
     width: 100%;
     cursor: pointed;
@@ -105,6 +110,7 @@ export {
     InputIcon,
     Icon,
     ErrorField,
+    RequestErrorField,
     FormButton,
     LoginText
 };

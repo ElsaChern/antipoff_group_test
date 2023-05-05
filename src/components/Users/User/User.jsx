@@ -1,5 +1,5 @@
-import phone from "../../../icons/telephone.svg"
-import email from "../../../icons/envelope.svg"
+import phone from "../../../icons/telephone.svg";
+import email from "../../../icons/envelope.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import fetchSingleUser from "../../../api/fetchSingleUser";
 import { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ const User = () => {
     const signOut = () => {
         dispatch(removeUser());
         navigate("/signin");
-    }
+    };
 
     const [user, setUser] = useState({});
 
@@ -39,7 +39,7 @@ const User = () => {
         const getUser = async () => {
             try {
                 const userResult = await fetchSingleUser(id);
-                setUser(userResult)
+                setUser(userResult);
             } catch {
                 setUser({});
             }

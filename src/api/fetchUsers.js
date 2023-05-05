@@ -1,13 +1,9 @@
-import apiInstance from "./apiInstance"
+import apiInstance from "./apiInstance";
 
-const fetchUrl = "/users"
+const fetchUrl = "/users";
 
-const fetchUsers = async (page = 1) => {
-    const params = {
-        page
-    }
-
-    const response = await apiInstance.get(fetchUrl, params);
+const fetchUsers = async () => {
+    const response = await apiInstance.get(fetchUrl);
 
     return response.data.data;
 }
