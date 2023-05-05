@@ -12,11 +12,11 @@ Website that displays a list of user cards on the main page and clicks on each c
 
 ## How to start the App:
 
-add https://reqres.in/api/ into .env.local 
+Add `https://reqres.in/api/` into .env.local (You should create `env.local` file and put `REACT_APP_API_URI = https://reqres.in/api/` there)
 
-To sign in or sign up use default Users emails from https://reqres.in/
+To sign in or sign up use default Users emails from https://reqres.in/; (example: eve.holt@reqres.in, george.bluth@reqres.in)
 
-`npm install`;
+`npm install` - to install dependencies;
 
 `npm start` to run the server
 
@@ -25,4 +25,4 @@ You can stop the server by simply closing the terminal in which you started it.
 
 ## Screenshorts
 
-(WIP)
+"You can see how the app works here (link)"

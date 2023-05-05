@@ -1,7 +1,7 @@
-import apiInstance from "./apiInstance"
+import apiInstance from "./apiInstance";
 
 const fetchSingleUser = async (id) => {
-    const fetchUrl = `/users/${id}`
+    const fetchUrl = `/users/${id}`;
 
     const response = await apiInstance.get(fetchUrl);
 

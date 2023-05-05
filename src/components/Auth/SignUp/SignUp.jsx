@@ -1,6 +1,6 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import openEye from "../../../icons/open_eye.svg"
-import closeEye from "../../../icons/eye-slash.svg"
+import openEye from "../../../icons/open_eye.svg";
+import closeEye from "../../../icons/eye-slash.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import register from "../../../api/register";
@@ -19,7 +19,8 @@ import {
     FormWrapper,
     Icon,
     InputIcon,
-    LoginText
+    LoginText,
+    RequestErrorField
 } from "../styled";
 
 const SignUp = () => {
@@ -29,22 +30,23 @@ const SignUp = () => {
         email: "",
         password: "",
         passwordConfirmation: "",
-    })
+    });
     const [errors, setErrors] = useState({});
+    const [requestError, setRequestError] = useState("");
 
     const handleChange = (e) => {
         setValues({
             ...values, [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
 
     const togglePasswordShown = () => {
         setPasswordShown(!passwordShown);
-    }
+    };
 
     const togglePasswordConfirmationShown = () => {
         setpasswordConfirmationShown(!passwordConfirmationShown);
-    }
+    };
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -52,23 +54,29 @@ const SignUp = () => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        const newErrors = validation(values)
+        const newErrors = validation(values);
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length) {
             return;
-        }
-        const result = await register(values.email, values.password);
-        dispatch(setUser({ token: result.token }));
-        navigate("/users");
-    }
+        };
 
-    const { isAuth } = useAuth()
+        try {
+            const result = await register(values.email, values.password);
+            dispatch(setUser({ token: result.token }));
+            navigate("/users");
+        } catch (err) {
+            setRequestError(err);
+        };
+    };
+
+    const { isAuth } = useAuth();
 
     return isAuth ? (
         (<Navigate to="/users" />)
     ) : (
         <FormWrapper>
+            <RequestErrorField>{requestError}</RequestErrorField>
             <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Регистрация</FormTitle>
                 <FormControl>

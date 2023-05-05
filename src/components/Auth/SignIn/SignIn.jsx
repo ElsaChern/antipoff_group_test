@@ -1,7 +1,6 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { InputIcon } from "../styled";
-import openEye from "../../../icons/open_eye.svg"
-import closeEye from "../../../icons/eye-slash.svg"
+import openEye from "../../../icons/open_eye.svg";
+import closeEye from "../../../icons/eye-slash.svg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import login from '../../../api/login';
@@ -19,7 +18,9 @@ import {
     FormTitle,
     FormWrapper,
     Icon,
-    LoginText
+    LoginText,
+    InputIcon,
+    RequestErrorField
 } from "../styled";
 
 const SignIn = () => {
@@ -27,18 +28,19 @@ const SignIn = () => {
     const [values, setValues] = useState({
         email: "",
         password: "",
-    })
+    });
     const [errors, setErrors] = useState({});
+    const [requestError, setRequestError] = useState("");
 
     const handleChange = (e) => {
         setValues({
             ...values, [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
 
     const togglePasswordInput = () => {
         setPasswordShown(!passwordShown);
-    }
+    };
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -46,24 +48,29 @@ const SignIn = () => {
     const handleSubmit = async e => {
         e.preventDefault();
 
-        const newErrors = validation(values)
+        const newErrors = validation(values);
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length) {
             return;
-        }
+        };
 
-        const result = await login(values.email, values.password);
-        dispatch(setUser({ token: result.token }));
-        navigate("/users");
-    }
+        try {
+            const result = await login(values.email, values.password);
+            dispatch(setUser({ token: result.token }));
+            navigate("/users");
+        } catch (err) {
+            setRequestError(err);
+        };
+    };
 
-    const { isAuth } = useAuth()
+    const { isAuth } = useAuth();
 
     return isAuth ? (
         (<Navigate to="/users" />)
     ) : (
         <FormWrapper>
+            <RequestErrorField>{requestError}</RequestErrorField>
             <Form onSubmit={handleSubmit} noValidate>
                 <FormTitle>Вход</FormTitle>
                 <FormControl>

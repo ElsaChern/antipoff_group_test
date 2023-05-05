@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logOut from "../../icons/log-out.svg"
+import logOut from "../../icons/log-out.svg";
 
 const Header = styled.div`
     background-color: rgba(81, 38, 137, 1);
